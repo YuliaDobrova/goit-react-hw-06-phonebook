@@ -1,26 +1,22 @@
-// ====================================================
+import React from "react";
+import styles from "./FIlter.module.css";
+import { connect } from "react-redux";
+import { setFilter } from "../../redux/phonebook/phonebookActions";
 
-// import React from "react";
-// import styles from "./FIlter.module.css";
+const Filter = ({ value, setFilter }) => {
+  return (
+    <>
+      <label className={styles.filterName}>
+        Find contacts by name
+        <input
+          className={styles.filterInput}
+          type="text"
+          value={value}
+          onChange={(e) => setFilter(e.target.value)}
+        />
+      </label>
+    </>
+  );
+};
 
-// const Filter = ({ value, onFilter }) => {
-//   const onContactFilter = (event) => {
-//     onFilter(event.target.value);
-//   };
-
-//   return (
-//     <>
-//       <label className={styles.filterName}>
-//         Find contacts by name
-//         <input
-//           className={styles.filterInput}
-//           type="text"
-//           value={value}
-//           onChange={onContactFilter}
-//         />
-//       </label>
-//     </>
-//   );
-// };
-
-// export default Filter;
+export default connect(null, { setFilter: setFilter })(Filter);

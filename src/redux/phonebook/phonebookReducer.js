@@ -7,14 +7,14 @@ import { ADD_CONTACT, DELETE_CONTACT, SET_FILTER } from "./phonebookActions";
 // state={items:[{name:'', number:''},{name:'', number:''}], filter:''}
 
 const itemsReducer = (state = [], { type, payload }) => {
-  console.log(payload);
-  console.log(state);
+  // console.log(payload);
+  // console.log(state);
   switch (type) {
     case ADD_CONTACT:
       return [...state, payload];
 
     case DELETE_CONTACT:
-      return state.filter((item) => item.id !== payload.id);
+      return state.filter((item) => item.id !== payload);
     default:
       return state;
   }

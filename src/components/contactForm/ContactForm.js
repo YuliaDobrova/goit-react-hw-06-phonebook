@@ -5,6 +5,7 @@ import {
 } from "../../redux/phonebook/phonebookActions";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./ContactForm.module.css";
 
 class ContactForm extends Component {
   state = { name: "", number: "" };
@@ -16,16 +17,24 @@ class ContactForm extends Component {
 
   onHandleSubmit = (e) => {
     e.preventDefault();
+    const addingContact = this.props.contacts.find(
+      ({ name }) => name.toLowerCase() === this.state.name.toLowerCase()
+    );
+    if (addingContact) {
+      alert(`${this.state.name} is already in contacts`);
+      return;
+    }
     this.props.addContact({ ...this.state, id: uuidv4() });
     this.setState({ name: "", number: "" });
   };
 
   render() {
     return (
-      <form onSubmit={this.onHandleSubmit}>
-        <label>
+      <form className={styles.form} onSubmit={this.onHandleSubmit}>
+        <label className={styles.formName}>
           Name:
           <input
+            className={styles.formInput}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -35,9 +44,10 @@ class ContactForm extends Component {
             required
           />
         </label>
-        <label>
+        <label className={styles.formName}>
           Phone№:
           <input
+            className={styles.formInput}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -47,14 +57,18 @@ class ContactForm extends Component {
             required
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={styles.formButton}>
+          Add contact
+        </button>
       </form>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    contacts: state.items,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
