@@ -1,15 +1,16 @@
 // Создай действия (actions) сохранения и удаления контакта, а также обновления фильтра.
 import { createAction } from "@reduxjs/toolkit";
 
-export const ADD_CONTACT = "phonebook/addContact";
-export const DELETE_CONTACT = "phonebook/deleteContact";
-export const SET_FILTER = "phonebook/setFilter";
+// export const ADD_CONTACT = "phonebook/addContact";
+// export const DELETE_CONTACT = "phonebook/deleteContact";
+// export const SET_FILTER = "phonebook/setFilter";
 
-const addContact = createAction(ADD_CONTACT);
-const deleteContact = createAction(DELETE_CONTACT);
-const setFilter = createAction(SET_FILTER);
+export const addContact = createAction("phonebook/addContact");
+export const deleteContact = createAction("phonebook/deleteContact");
+export const setFilter = createAction("phonebook/setFilter");
 
-export { addContact, deleteContact, setFilter };
+const actions = { addContact, deleteContact, setFilter };
+export default actions;
 
 // ==================================================================
 // REDUX

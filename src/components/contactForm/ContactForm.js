@@ -17,8 +17,12 @@ class ContactForm extends Component {
 
   onHandleSubmit = (e) => {
     e.preventDefault();
+    console.log(`this.props.contacts`, this.props.contacts);
+    // const addingContact = this.props.contacts.find(
+    //   ({ name }) => name.toLowerCase() === this.state.name.toLowerCase()
+    // );
     const addingContact = this.props.contacts.find(
-      ({ name }) => name.toLowerCase() === this.state.name.toLowerCase()
+      (contact) => contact.name.toLowerCase() === this.state.name.toLowerCase()
     );
     if (addingContact) {
       alert(`${this.state.name} is already in contacts`);

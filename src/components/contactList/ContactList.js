@@ -4,29 +4,33 @@ import { connect } from "react-redux";
 import { deleteContact } from "../../redux/phonebook/phonebookActions";
 
 const ContactList = ({ items, deleteContact }) => {
-  // console.log(items);
+  // console.log(`contacts list`, items);
   return (
     <>
       <ul className={styles.contactList}>
-        {items.map(({ id, name, number }) => (
-          <li className={styles.contactListItem} key={id}>
-            <span className={styles.contactListItemSpan}>{name}</span>:
-            <span className={styles.contactListItemSpan}>{number}</span>
-            <button
-              type="button"
-              className={styles.listItemButton}
-              onClick={() => deleteContact(id)}
-            >
-              Detete
-            </button>
-          </li>
-        ))}
+        {items.length > 0 &&
+          items.map((item) => (
+            <li className={styles.contactListItem} key={item.id}>
+              <span className={styles.contactListItemSpan}>{item.name}</span>:
+              <span className={styles.contactListItemSpan}>{item.number}</span>
+              <button
+                type="button"
+                className={styles.listItemButton}
+                onClick={() => deleteContact(item.id)}
+              >
+                Detete
+              </button>
+            </li>
+          ))}
       </ul>
     </>
   );
 };
 
 const mapStateToProps = (state) => {
+  // return { items: state.items };
+
+  // if (state.items.length > 0 && state.filter.length > 0)
   return {
     items: state.items.filter((item) =>
       item.name.toLowerCase().includes(state.filter.toLowerCase())
