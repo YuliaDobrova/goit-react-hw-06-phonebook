@@ -1,11 +1,7 @@
 // Создай хранилище и добавь инструменты разработчика
 // =============================================
 
-import {
-  configureStore,
-  getDefaultMiddleware,
-  combineReducers,
-} from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -31,7 +27,6 @@ const persistConfig = {
   key: "root",
   storage,
 };
-
 const rootReducer = contactsReducer;
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -45,9 +40,20 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 export default { store, persistor };
-// eslint ругается
 
 // =============================================
+// const rootReducer = combineReducers({
+//   phonebook: persistReducer(persistConfig, contactsReducer),
+// });
+
+// const store = configureStore({
+//   reducer: rootReducer,
+//   middleware,
+//   devTools: process.env.NODE_ENV === "development",
+// });
+
+// const persistor = persistStore(store);
+// ================================================
 // REDUX
 // import { createStore } from "redux";
 // // import { combineReducers } from "redux";

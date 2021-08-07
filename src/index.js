@@ -11,7 +11,7 @@ import store from "./redux/store";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store.store}>
-      <PersistGate loading={null} persistor={store.persistor}>
+      <PersistGate loading={<h2>...isloading</h2>} persistor={store.persistor}>
         <App />
       </PersistGate>
     </Provider>

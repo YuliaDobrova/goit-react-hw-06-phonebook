@@ -29,8 +29,6 @@ const ContactList = ({ items, deleteContact }) => {
 
 const mapStateToProps = (state) => {
   // return { items: state.items };
-
-  // if (state.items.length > 0 && state.filter.length > 0)
   return {
     items: state.items.filter((item) =>
       item.name.toLowerCase().includes(state.filter.toLowerCase())
