@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {
   addContact,
-  deleteContact,
+  // deleteContact,
 } from "../../redux/phonebook/phonebookActions";
 import { connect } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
@@ -75,7 +75,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addContact: (newContact) => dispatch(addContact(newContact)),
-    deleteContact: (id) => dispatch(deleteContact(id)),
+    // deleteContact: (id) => dispatch(deleteContact(id)),
   };
 };
 

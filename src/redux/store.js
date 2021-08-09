@@ -26,6 +26,7 @@ const middleware = [
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["items"],
 };
 const rootReducer = contactsReducer;
 

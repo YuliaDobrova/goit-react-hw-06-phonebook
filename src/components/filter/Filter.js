@@ -3,7 +3,7 @@ import styles from "./FIlter.module.css";
 import { connect } from "react-redux";
 import { setFilter } from "../../redux/phonebook/phonebookActions";
 
-const Filter = ({ value, setFilter }) => {
+const Filter = ({ filter, setFilter }) => {
   return (
     <>
       <label className={styles.filterName}>
@@ -11,7 +11,7 @@ const Filter = ({ value, setFilter }) => {
         <input
           className={styles.filterInput}
           type="text"
-          value={value}
+          value={filter}
           onChange={(e) => setFilter(e.target.value)}
         />
       </label>
@@ -19,4 +19,8 @@ const Filter = ({ value, setFilter }) => {
   );
 };
 
-export default connect(null, { setFilter: setFilter })(Filter);
+const mapStateToProps = (state) => ({
+  filter: state.filter,
+});
+
+export default connect(mapStateToProps, { setFilter: setFilter })(Filter);
